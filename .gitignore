@@ -121,7 +121,8 @@ celerybeat.pid
 
 # Environments
 .env
-.artifact
+.artifact/
+.catboost_info/
 .venv
 .mvenv
 env/

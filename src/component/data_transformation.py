@@ -58,10 +58,9 @@ class DataTransformation():
 
     def initiate_data_transformation(self, train_path, test_path):
         try:
+            logging.info("read train and test data")
             train_Df = pd.read_csv(train_path)
             test_df = pd.read_csv(test_path)
-
-            logging.info("read train and test data done..")
 
             logging.info("obtaining the preprocessing object")
             preprocessor_obj = self.get_data_transformer_object()
@@ -76,7 +75,6 @@ class DataTransformation():
             target_feature_test_df = test_df[target_column]
 
             logging.info("Applying preprocessing")
-
             input_feature_train_arr = preprocessor_obj.fit_transform(input_feature_train_df)
             input_feature_test_arr = preprocessor_obj.fit_transform(input_feature_test_df)
             
