@@ -1,7 +1,7 @@
 import os, sys, pickle
 import numpy as np 
 import pandas as pd
-# import dill
+import dill
 from sklearn.metrics import r2_score
 from sklearn.model_selection import GridSearchCV
 from src.exception import Customexception
@@ -19,9 +19,6 @@ def save_object(file_path, obj):
 
     except Exception as e:
         raise CustomException(e, sys)
-
-
-
 
 def evaluate_model(x_train, y_train, x_test, y_test, models):
     try:
@@ -48,4 +45,10 @@ def evaluate_model(x_train, y_train, x_test, y_test, models):
         logging.info(e)
         raise Customexception(e, sys)
 
+def load_object(file_path):
+    try:
+        with open(file_path, "rb") as file_obj:
+            return pickle.load(file_obj)
+    except Exception as e:
+        raise Customexception(e, sys)
 
